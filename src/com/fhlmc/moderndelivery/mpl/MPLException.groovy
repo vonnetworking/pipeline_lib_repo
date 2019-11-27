@@ -21,12 +21,12 @@
 // @Description: Shared Jenkins Modular Pipeline Library
 //
 
-package com.griddynamics.devops.mpl
+package com.fhlmc.moderndelivery.mpl
 
 /**
  * Exception to handle module execution errors
  *
- * @author Sergei Parshev <sparshev@griddynamics.com>
+ * @author Agile Trailblazers
  */
 @groovy.transform.InheritConstructors
-class MPLModuleException extends MPLException {}
+class MPLException extends RuntimeException {}

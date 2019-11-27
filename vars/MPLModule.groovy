@@ -1,8 +1,8 @@
 //
-// Copyright (c) 2018 Grid Dynamics International, Inc. All Rights Reserved
-// https://www.griddynamics.com
+// Copyright (c) 2019 Agile Trailblazers, Inc. All Rights Reserved
+// https://www.agiletrailblazers.com
 //
-// Classification level: Public
+// Classification level: Confidential
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@
 // @Description: Shared Jenkins Modular Pipeline Library
 //
 
-import com.griddynamics.devops.mpl.Helper
-import com.griddynamics.devops.mpl.MPLManager
-import com.griddynamics.devops.mpl.MPLModuleException
-import com.griddynamics.devops.mpl.MPLConfig
+import com.fhlmc.moderndelivery.mpl.Helper
+import com.fhlmc.moderndelivery.mpl.MPLManager
+import com.fhlmc.moderndelivery.mpl.MPLModuleException
+import com.fhlmc.moderndelivery.mpl.MPLConfig
 
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
@@ -35,7 +35,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
  *   Module finding: workspace --> nested lib 2 --> nested lib 1 --> MPL library
  *   Loop protection: There is no way to run currently active module again
  *
- * @author Sergei Parshev <sparshev@griddynamics.com>
+ * @author Agile Trailblazers
  *
  * @param name  used to determine the module name, by default it's current stage name (ex. "Maven Build")
  * @param cfg   module configuration to override. Will update the common module configuration

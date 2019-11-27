@@ -1,12 +1,5 @@
-Modular Pipeline Library
-========================
-
-[![CircleCI](https://circleci.com/gh/griddynamics/mpl/tree/master.svg?style=shield)](https://circleci.com/gh/griddynamics/mpl) [![Gitter](https://badges.gitter.im/modular-pipeline-library/community.svg)](https://gitter.im/modular-pipeline-library/community)
-
-[![CircleCI nightly LTS](https://img.shields.io/badge/dynamic/json?label=nightly%20lts&query=%24%5B%3F%28%40.branch%20%3D%3D%20%22master%22%20%26%26%20%40.workflows.workflow_name%20%3D%3D%20%22nightly_jenkins_test%22%20%26%26%20%40.workflows.%20job_name%20%3D%3D%20%22jenkins_test-1%22%29%5D.status&url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fgh%2Fgriddynamics%2Fmpl%3Flimit%3D10)](https://circleci.com/gh/griddynamics/workflows/mpl/tree/master) - testing MPL pipeline with the current LTS Jenkins every night
-
-[![CircleCI nightly Latest](https://img.shields.io/badge/dynamic/json?label=nightly%20latest&query=%24%5B%3F%28%40.branch%20%3D%3D%20%22master%22%20%26%26%20%40.workflows.workflow_name%20%3D%3D%20%22nightly_jenkins_test%22%20%26%26%20%40.workflows.%20job_name%20%3D%3D%20%22jenkins_test-2%22%29%5D.status&url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fgh%2Fgriddynamics%2Fmpl%3Flimit%3D10)](https://circleci.com/gh/griddynamics/workflows/mpl/tree/master) - testing MPL pipeline with the current Latest Jenkins every night
-
+Modern Delivery Modular Pipeline Library
+========================================
 Shared jenkins library with modular structure allow to write a simple pipeline modules, test it properly and use in any kind of pipelines.
 
 ## Goals
@@ -20,17 +13,11 @@ Shared jenkins library with modular structure allow to write a simple pipeline m
 
 ## Documentation
 
-This readme contains mostly technical information, if you need some overview - please check the next resources:
+This readme contains mostly technical information, if you need some overview - please check the resources in Confluence:
 
-* [Grid Dynamics Blog](https://blog.griddynamics.com/developing-a-modular-pipeline-library-to-improve-devops-collaboration/)
-* Overview & demo videos:
-  * [MPL Intro](https://youtu.be/NpnQS3fFlyI)
-  * [MPL Overview](https://youtu.be/wwi7oREL02k)
-  * [Demo of the MPL Build](https://youtu.be/QZsQThhPk-Y)
-  * [Demo of the Nested Library](https://youtu.be/UsThHFze76Y)
-  * [Demo of the Petclinic Pipeline](https://youtu.be/GLtvxY1S3Aw)
+https://confluence.agiletrailblazers.com/display/FMT/DevOps+Pipeline+2.0
 
-You also can check [MPL Wiki](https://github.com/griddynamics/mpl/wiki) to find additional info.
+
 
 ## Dependencies
 

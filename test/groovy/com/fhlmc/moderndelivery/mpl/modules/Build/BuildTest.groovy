@@ -29,7 +29,7 @@ import static com.lesfurets.jenkins.unit.global.lib.LocalSource.localSource
 
 import static org.assertj.core.api.Assertions.assertThat
 
-import com.griddynamics.devops.mpl.Helper
+import com.fhlmc.moderndelivery.mpl.Helper
 import com.griddynamics.devops.mpl.testing.MPLTestBase
 
 class BuildTest extends MPLTestBase {

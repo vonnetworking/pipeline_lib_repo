@@ -25,9 +25,9 @@ package com.griddynamics.devops.mpl.testing
 
 import com.lesfurets.jenkins.unit.BasePipelineTest
 
-import com.griddynamics.devops.mpl.MPLConfig
-import com.griddynamics.devops.mpl.MPLManager
-import com.griddynamics.devops.mpl.Helper
+import com.fhlmc.moderndelivery.mpl.MPLConfig
+import com.fhlmc.moderndelivery.mpl.MPLManager
+import com.fhlmc.moderndelivery.mpl.Helper
 
 import java.security.AccessController
 import java.security.PrivilegedAction

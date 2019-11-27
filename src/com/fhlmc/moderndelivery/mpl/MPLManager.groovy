@@ -21,12 +21,12 @@
 // @Description: Shared Jenkins Modular Pipeline Library
 //
 
-package com.griddynamics.devops.mpl
+package com.fhlmc.moderndelivery.mpl
 
 /**
  * Object to help with MPL pipelines configuration & poststeps
  *
- * @author Sergei Parshev <sparshev@griddynamics.com>
+ * @author Agile Trailblazers
  */
 @Singleton
 class MPLManager implements Serializable {

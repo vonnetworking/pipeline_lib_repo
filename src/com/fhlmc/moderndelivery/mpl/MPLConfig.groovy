@@ -21,14 +21,14 @@
 // @Description: Shared Jenkins Modular Pipeline Library
 //
 
-package com.griddynamics.devops.mpl
+package com.fhlmc.moderndelivery.mpl
 
 import com.cloudbees.groovy.cps.NonCPS
 
 /**
  * Configuration object to provide the config interface
  *
- * @author Sergei Parshev <sparshev@griddynamics.com>
+ * @author Agile Trailblazers
  */
 public class MPLConfig implements Map, Serializable {
   /** Configuration Map or List storage */

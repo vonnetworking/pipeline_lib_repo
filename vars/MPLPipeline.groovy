@@ -1,8 +1,8 @@
 //
-// Copyright (c) 2018 Grid Dynamics International, Inc. All Rights Reserved
-// https://www.griddynamics.com
+// Copyright (c) 2019 Agile Trailblazers, Inc. All Rights Reserved
+// https://www.agiletrailblazers.com
 //
-// Classification level: Public
+// Classification level: Confidential
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
  * Basic MPL pipeline
  * Shows pipeline with basic stages and modules of the MPL library
  *
- * @author Sergei Parshev <sparshev@griddynamics.com>
+ * @author Agile Trailblazers
  */
 def call(body) {
   def MPL = MPLPipelineConfig(body, [

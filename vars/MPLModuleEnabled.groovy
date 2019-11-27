@@ -1,8 +1,8 @@
 //
-// Copyright (c) 2018 Grid Dynamics International, Inc. All Rights Reserved
-// https://www.griddynamics.com
+// Copyright (c) 2019 Agile Trailblazers, Inc. All Rights Reserved
+// https://www.agiletrailblazers.com
 //
-// Classification level: Public
+// Classification level: Confidential
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@
 // @Description: Shared Jenkins Modular Pipeline Library
 //
 
-import com.griddynamics.devops.mpl.MPLManager
+import com.fhlmc.moderndelivery.mpl.MPLManager
 
 /**
  * Determine is module enabled in the pipeline or not
  *
- * @author Sergei Parshev <sparshev@griddynamics.com>
+ * @author Agile Trailblazers
  * @param name  Module name (stage name by default)
  * @return  Boolean module enabled or not
  */

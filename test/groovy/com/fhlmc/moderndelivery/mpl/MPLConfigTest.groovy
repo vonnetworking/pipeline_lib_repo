@@ -27,8 +27,8 @@ import org.junit.Test
 import static org.assertj.core.api.Assertions.assertThat
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType
 
-import com.griddynamics.devops.mpl.MPLConfig
-import com.griddynamics.devops.mpl.MPLException
+import com.fhlmc.moderndelivery.mpl.MPLConfig
+import com.fhlmc.moderndelivery.mpl.MPLException
 
 class MPLConfigTest {
   def CFG = null
