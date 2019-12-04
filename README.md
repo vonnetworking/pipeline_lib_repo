@@ -37,7 +37,7 @@ Go to: Manage Jenkins --> Configure System --> Global Pipeline Libraries:
   * Include @Library changes in job recent changes: `true`
   * Retrieval method: `Modern SCM`
   * Source Code Management: `Git`
-  * Project Repository: `https://github.com/griddynamics/mpl.git`
+  * Project Repository: `https://github.com/agiletrailblazers/mdmpl.git`
   * Behaviors: `Discover branches`, `Discover tags`
 
 ## Usage
@@ -130,7 +130,7 @@ MPL is mostly modules with logic. Basic features:
 In fact modules could be loaded from a number of places:
 * `{ProjectRepo}/.jenkins/modules/{Stage}/{Name}{Stage}.groovy` - custom modules for the project
 * `{Library}/{SpecifiedModulesLoadPath}/modules/{Stage}/{Name}{Stage}.groovy` - custom modules load path that added while init
-* `{Library}/resources/com/griddynamics/devops/mpl/modules/{Stage}/{Name}{Stage}.groovy` - library modules for everyone
+* `{Library}/resources/com/fhlmc/devops/mpl/modules/{Stage}/{Name}{Stage}.groovy` - library modules for everyone
 
 If you will override module Build in your project repo, it will be used first.
 If you will try to require Build module from this overridden Build module - original library module will be used.
