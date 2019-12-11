@@ -2,8 +2,8 @@
  * Common build module
  */
 
-MPLModule('Maven Build', CFG)
-
-if( fileExists('openshift') ) {
-  MPLModule('Openshift Build', CFG)
+if( CFG.'build.maven' ) {
+  MPLModule('Maven Build', CFG)
+} else {
+  MPLModule('Gradle Build', CFG)
 }
