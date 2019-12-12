@@ -1,4 +1,6 @@
 
+
+
 print 'Checking JIRA Status....'
 
 def code = new URL('https://pilot.agiletrailblazers.com/jira').openConnection().with {
@@ -14,5 +16,5 @@ if(responseCode == 200)
 else
 {
     println responsecode + ' FAIL'
-    throw new MPLException("Jira health check failed: Response code " + responseCode)
+    throw new MPLModuleException("Jira health check failed: Response code " + responseCode)
 }
