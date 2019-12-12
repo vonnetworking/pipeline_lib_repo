@@ -32,5 +32,5 @@ if(responseCode == 200)
 else
 {
     println responseCode + ' FAIL'
-    throw new MPLModuleException("Jira health check failed: Response code " + responseCode)
+    throw new MPLModuleException("Sonarqube health check failed: Response code " + responseCode)
 }
