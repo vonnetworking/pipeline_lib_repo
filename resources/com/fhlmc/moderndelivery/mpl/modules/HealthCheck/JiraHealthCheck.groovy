@@ -9,7 +9,7 @@ print 'Checking JIRA Status....'
 
 HttpURLConnection urlConnection;
 def responseCode
-def targetUrl = 'https://pilot.agiletrailblazers.com/jira'
+def targetUrl = 'https://pilot.agiletrailblazers.com/jira/'
 
 try {
     urlConnection = (HttpURLConnection) new URL(targetUrl).openConnection()
