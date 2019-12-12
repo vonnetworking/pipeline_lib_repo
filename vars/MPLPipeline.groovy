@@ -46,6 +46,13 @@ def call(body) {
       skipDefaultCheckout(true)
     }
     stages {
+      stage( 'HealthCheck' ) {
+        when { expression { MPLModuleEnabled() } }
+        steps {
+          MPLModule()
+      }
+    }
+    stages {
       stage( 'Checkout' ) {
         when { expression { MPLModuleEnabled() } }
         steps {

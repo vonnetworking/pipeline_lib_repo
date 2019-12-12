@@ -1,6 +1,6 @@
 //
-// Copyright (c) 2018 Grid Dynamics International, Inc. All Rights Reserved
-// https://www.griddynamics.com
+// Copyright (c) 2019 Agile Trailblazers, Inc. All Rights Reserved
+// https://www.agiletrailblazers.com
 //
 // Classification level: Public
 //
@@ -34,7 +34,7 @@ class MPLTestHelper extends PipelineTestHelper {
   public getLibraryClassLoader() {
     gse.groovyClassLoader
   }
-  
+
   void registerAllowedMethod(MethodSignature methodSignature, Closure closure) {
     if( isMethodAllowed(methodSignature.name, methodSignature.args) )
       return // Skipping methods already existing in the list

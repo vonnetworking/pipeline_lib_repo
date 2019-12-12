@@ -1,6 +1,6 @@
 //
-// Copyright (c) 2018 Grid Dynamics International, Inc. All Rights Reserved
-// https://www.griddynamics.com
+// Copyright (c) 2019 Agile Trailblazers, Inc. All Rights Reserved
+// https://www.agiletrailblazers.com
 //
 // Classification level: Public
 //
@@ -72,7 +72,7 @@ abstract class MPLTestBase extends BasePipelineTest {
       script.metaClass.methodMissing = helper.getMethodMissingInterceptor()
       script.run()
     }
-    
+
     // Show the dump of the configuration during unit tests execution
     Helper.metaClass.static.configEntrySet = { Map config -> config.entrySet() }
   }
