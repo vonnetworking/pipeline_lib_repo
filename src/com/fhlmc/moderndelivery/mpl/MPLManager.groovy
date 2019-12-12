@@ -31,7 +31,7 @@ package com.fhlmc.moderndelivery.mpl
 @Singleton
 class MPLManager implements Serializable {
   /** List of paths which is used to find modules in libraries */
-  private List modulesLoadPaths = ['com/griddynamics/devops/mpl']
+  private List modulesLoadPaths = ['com/fhlmc/devops/mpl']
 
   /** Pipeline configuration */
   private Map config = [:]
