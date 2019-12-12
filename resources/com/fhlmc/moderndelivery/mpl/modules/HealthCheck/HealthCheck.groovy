@@ -4,4 +4,4 @@
 
 echo 'Toolchain Healthcheck ...'
 
-MPLModule('Jira Health Check', CFG)
+MPLModule('Jira HealthCheck', CFG)
