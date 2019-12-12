@@ -9,7 +9,7 @@ print 'Checking Artifactory Status....'
 
 HttpURLConnection urlConnection;
 def responseCode
-def targetUrl = 'https://pilot.agiletrailblazers.com/artifactory'
+def targetUrl = 'https://pilot.agiletrailblazers.com/artifactory/'
 
 try {
     urlConnection = (HttpURLConnection) new URL(targetUrl).openConnection()
