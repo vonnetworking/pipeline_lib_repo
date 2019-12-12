@@ -2,4 +2,4 @@
  * Health Checker
  */
 
-echo "Toolchain Healthcheck ..."
+echo 'Toolchain Healthcheck ...'
