@@ -2,8 +2,8 @@
  * Common build module
  */
 
-if( CFG.'build.maven' ) {
-  MPLModule('Maven Build', CFG)
-} else {
+if( CFG.'build.gradle' ) {
   MPLModule('Gradle Build', CFG)
+} else {
+  MPLModule('Maven Build', CFG)
 }
