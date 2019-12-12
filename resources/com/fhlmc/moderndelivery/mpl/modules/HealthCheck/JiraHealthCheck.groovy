@@ -1,13 +1,26 @@
 
 import com.fhlmc.moderndelivery.mpl.*
 
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 print 'Checking JIRA Status....'
 
-def code = new URL('https://pilot.agiletrailblazers.com/jira').openConnection().with {
-    requestMethod = 'HEAD'
-    connect()
-    responseCode
+HttpURLConnection urlConnection;
+def responseCode
+
+try {
+    urlConnection = (HttpURLConnection) new URL(targetUrl).openConnection()
+    urlConnection.setRequestMethod("HEAD")
+    urlConnection.setConnectTimeout(2000)
+    urlConnection.setReadTimeout(2000)
+    responseCode = urlConnection.getResponseCode();
+
+} catch (Exception e) {
+    responseCode = 0
 }
+
 
 if(responseCode == 200)
 {
