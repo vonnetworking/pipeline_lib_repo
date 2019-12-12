@@ -5,11 +5,11 @@ import com.fhlmc.moderndelivery.mpl.*
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-print 'Checking JIRA Status....'
+print 'Checking Sonarqube Status....'
 
 HttpURLConnection urlConnection;
 def responseCode
-def targetUrl = 'https://pilot.agiletrailblazers.com/jira'
+def targetUrl = 'https://pilot.agiletrailblazers.com/sonarqube'
 
 try {
     urlConnection = (HttpURLConnection) new URL(targetUrl).openConnection()
