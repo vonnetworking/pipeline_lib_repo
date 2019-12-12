@@ -28,6 +28,6 @@ if(responseCode == 200)
 }
 else
 {
-    println responsecode + ' FAIL'
+    println responseCode + ' FAIL'
     throw new MPLModuleException("Jira health check failed: Response code " + responseCode)
 }
