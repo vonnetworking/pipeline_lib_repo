@@ -169,20 +169,6 @@ to execute it and usually placed in the pipeline post actions.
 
 When error occurs during poststeps execution - it will be printed in the log, but status of pipeline will not be affected.
 
-1
-### Enforcing modules
-
-To make sure that some of your stages will be executed for sure - you can add a list of modules that could be overrided on the project side.
-Just make sure, that you executing function `MPLEnforce` and provide list of modules that could be overriden in your pipeline script:
-Jenkins job script:
-```
-@Library('mpl@release') _
-
-// Only 'Build Maven' & 'Deploy' modules could be overriden on the project side
-MPLEnforce(['Build Maven', 'Deploy'])
-
-... // Your enforced pipeline
-```
 Notices:
 * The function `MPLEnforce` could be executed only once, after that it will ignore any further executions.
 * This trick is really working only if you controlling the job pipeline scripts, with Jenkinsfile it's not so secure.
@@ -206,64 +192,6 @@ MPLPipeline {
 }
 ```
 
-### Use Standard Pipeline but with custom module
-
-We fine with standard pipeline, but would like to use different deploy stage.
-
-* `{ProjectRepo}/Jenkinsfile`:
-  ```
-  @Library('mpl@release') _
-  
-  // Use default master pipeline
-  MPLPipeline {}
-  ```
-* `{ProjectRepo}/.jenkins/modules/Deploy/Deploy.groovy`:
-  ```
-  // Any step could be here, config modification, etc.
-  echo "Let's begin the deployment process!"
-  
-  // Run original deployment from the library
-  MPLModule('Deploy', CFG)
-  
-  echo "Deployment process completed!"
-  ```
-
-### Custom Declarative Pipeline with mixed steps
-
-`{ProjectRepo}/Jenkinsfile`:
-```
-@Library('mpl@release') _
-
-pipeline {  // Declarative pipeline
-  agent {
-    label 'LS'
-  }
-  stages {
-    stage( 'Build' ) {
-      parallel {        // Parallel build for 2 subprojects
-        stage( 'Build Project A' ) {
-          steps {
-            dir( 'subProjectA' ) {
-              MPLModule('Maven Build', [ // Using common Maven Build with specified configs
-                tool_version: 'Maven 2'
-              ])
-            }
-          }
-        }
-        stage( 'Build Project B' ) {
-          steps {
-            dir( 'subProjectB' ) {
-              // Custom build process (it's better to put it into the project custom module)
-              sh 'gradle build'
-              sh 'cp -a target my_data'
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
 
 ### Using nested library (based on MPL)
 
