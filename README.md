@@ -4,7 +4,6 @@ Shared jenkins library with modular structure allow to write a simple pipeline m
 
 ## Goals
 
-
 * Provide core to support flexible modular structure
 * Enable support for declarative & scripted pipelines
 * Ensure that nested libraries could reuse the MPL features
