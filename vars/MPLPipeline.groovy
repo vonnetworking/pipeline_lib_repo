@@ -19,6 +19,7 @@ def call(body) {
     agent_label: '',
     modules: [
       Checkout: [:],
+      HealthCheck: [:],
       Build: [:],
       Deploy: [:],
       Test: [:]
@@ -33,6 +34,12 @@ def call(body) {
       skipDefaultCheckout(true)
     }
     stages {
+      stage( 'HealthCheck' ) {
+        when { expression { MPLModuleEnabled() } }
+        steps {
+          MPLModule()
+      }
+    }
       stage( 'Checkout' ) {
         when { expression { MPLModuleEnabled() } }
         steps {

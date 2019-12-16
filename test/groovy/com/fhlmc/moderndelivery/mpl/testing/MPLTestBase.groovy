@@ -60,7 +60,7 @@ abstract class MPLTestBase extends BasePipelineTest {
       script.metaClass.methodMissing = helper.getMethodMissingInterceptor()
       script.run()
     }
-    
+
     // Show the dump of the configuration during unit tests execution
     Helper.metaClass.static.configEntrySet = { Map config -> config.entrySet() }
   }
