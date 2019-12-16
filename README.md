@@ -17,8 +17,6 @@ This readme contains mostly technical information, if you need some overview - p
 
 https://confluence.agiletrailblazers.com/display/FMT/DevOps+Pipeline+2.0
 
-
-
 ## Dependencies
 
 * Jenkins >= 2.74 LTS
@@ -42,7 +40,7 @@ Go to: Manage Jenkins --> Configure System --> Global Pipeline Libraries:
 
 ## Usage
 
-You will use MPL as a library reference in your Jenkinsfile:
+You will use MPL as a library reference in the application's Jenkinsfile:
 
 * **Modules**  - Common steps you can find in each pipeline. Prepare your pipeline structure and just use the required modules.
 
@@ -197,10 +195,10 @@ MPLPipeline {
 
 `{ProjectRepo}/Jenkinsfile`:
 ```
-@Library('nested-mpl@release') _
+@Library('mpl') _
 
-NestedPipeline {
-  // config here
+MPLPipeline {
+ \
 }
 ```
 

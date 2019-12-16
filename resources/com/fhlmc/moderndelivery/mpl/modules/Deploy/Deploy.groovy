@@ -2,4 +2,4 @@
  * Common deploy module
  */
 
-MPLModule('Openshift Deploy', CFG)
+MPLModule('Deploy', CFG)
