@@ -138,6 +138,6 @@ MPLPipeline {
 
 ### Handling illegal arguments in MPL closure
 
-* Attempts to override the default stages and accepted parameter values will fail the pipeline build
+Attempts to override the default stages and accepted parameter values will fail the pipeline build
 
 
