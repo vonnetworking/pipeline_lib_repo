@@ -4,9 +4,10 @@ MPLPipeline {
    /*
     * Checkout
     */
-    //
-    //
-    //
+    // git.url
+    // git.branch
+    // git.project_name
+    // git.project_key
   /*
    * Build
    */
@@ -14,10 +15,8 @@ MPLPipeline {
    // Gradle
    // gradle.tool_version = 'Gradle 1.33'
    // gradle.tasks = 'build'
-   // gradle.junit = 'target/surefire-reports/*.xml'
    // Maven (default: Maven 3)
    // maven.goals = 'clean install'
    // maven.tool_version = 'Maven 2'
-   // maven.junit = 'target/surefire-reports/*.xml'
 
 }
