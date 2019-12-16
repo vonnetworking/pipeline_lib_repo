@@ -366,23 +366,3 @@ NestedPipeline {
 }
 ```
 
-## Contribution
-
-### Tests
-
-We should be ensure that modules will not be broken accidentally, so tests is mandatory.
-
-MPL supports MPLModule testing via slightly modified [JenkinsPipelineUnit](https://github.com/jenkinsci/JenkinsPipelineUnit).
-You can find module tests (as well as modified base test classes & overridden requirements classes) in the `test` directory.
-
-To run tests just execute `mvn clean test` - and it will compile the classes & execute tests for the modules.
-
-### Pipelines
-
-MPL provided pipelines should be really simple, but could be improved with new best practices - so changes are always welcome.
-
-### Modules
-
-If you have some interesting module - you for sure can prepare changes for existing module or a new module, write tests, create
-the pull-request, describe it - and after that this module could be approved to be included n the base library. If not - you always
-could use (or create) your own nested library to share this fancy module across your projects.

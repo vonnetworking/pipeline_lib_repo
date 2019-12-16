@@ -23,9 +23,9 @@ import hudson.model.Run
 import hudson.FilePath
 
 /**
- * Manages all helpers to interact with low-level groovy
+ * Configuration object to provide the config interface
  *
- * @author Sergei Parshev <sparshev@griddynamics.com>
+ * @author Agile Trailblazers
  */
 abstract class Helper {
   /**
