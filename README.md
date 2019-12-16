@@ -169,44 +169,7 @@ to execute it and usually placed in the pipeline post actions.
 
 When error occurs during poststeps execution - it will be printed in the log, but status of pipeline will not be affected.
 
-1. `{NestedLibModules}/Deploy/OpenshiftDeploy.groovy`:
-   ```
-   MPLPostStep('always') {
-     echo "OpenShift Deploy Decomission poststep"
-   }
- 
-   echo 'Executing Openshift Deploy process'
-   ```
-2. `{NestedLib}/var/CustomPipeline.groovy`:
-   ```
-   def call(body) {
-     ...
-     pipeline {
-       ...
-       stages {
-         ...
-         stage( 'Openshift Deploy' ) {
-           steps {
-             MPLModule()
-           }
-         }
-         ...
-       }
-       post {
-         always {
-           MPLPostStepsRun('always')
-         }
-         success {
-           MPLPostStepsRun('success')
-         }
-         failure {
-           MPLPostStepsRun('failure')
-         }
-       }
-     }
-   }
-   ```
-
+1
 ### Enforcing modules
 
 To make sure that some of your stages will be executed for sure - you can add a list of modules that could be overrided on the project side.

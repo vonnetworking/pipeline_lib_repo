@@ -89,7 +89,7 @@ class MPLManager implements Serializable {
    *
    * @param name  Poststeps list name
    *              Usual poststeps list names:
-   *                * "always"  - used to run poststeps anyway (ex: decomission of the dynamic environment)
+   *                * "always"  - used to run poststeps anyway
    *                * "success" - poststeps to run on pipeline success (ex: email with congratulations or ask for promotion)
    *                * "failure" - poststeps to run on pipeline failure (ex: pipeline failed message)
    * @param body  Definition of steps to include in the list
