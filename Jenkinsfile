@@ -19,5 +19,5 @@ MPLPipeline {
    // maven.goals = 'clean install'
    // maven.tool_version = 'Maven 2'
    // maven.junit = 'target/surefire-reports/*.xml'
-  
+
 }

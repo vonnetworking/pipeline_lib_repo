@@ -13,7 +13,7 @@ Shared jenkins library with modular structure allow to write a simple pipeline m
 
 ## Documentation
 
-This readme contains mostly technical information, if you need some overview - please check the resources in Confluence:
+This readme contains mostly technical information, for more details, please check the resources in Confluence:
 
 https://confluence.agiletrailblazers.com/display/FMT/DevOps+Pipeline+2.0
 
@@ -31,7 +31,6 @@ Go to: Manage Jenkins --> Configure System --> Global Pipeline Libraries:
 * Name: `mpl`
   * Default Version: `<empty>`
   * Load implicitly: `false`
-  * Allow default version to be overridden: `true`
   * Include @Library changes in job recent changes: `true`
   * Retrieval method: `Modern SCM`
   * Source Code Management: `Git`
@@ -40,15 +39,15 @@ Go to: Manage Jenkins --> Configure System --> Global Pipeline Libraries:
 
 ## Usage
 
-You will use MPL as a library reference in the application's Jenkinsfile:
+Applications use MPL as a library reference in the application's Jenkinsfile:
 
-* **Modules**  - Common steps you can find in each pipeline. Prepare your pipeline structure and just use the required modules.
+* **Modules**  - Common steps that will be found in each pipeline. Prepares the pipeline structure and use the required modules.
 
 ### Jenkinsfile / Pipeline script
 
-Just two lines to use default Master pipeline in your project Jenkinsfile or in the Jenkins Pipeline Script:
+The pipeline needs to add the following code in the application project Jenkinsfile or in the Jenkins Pipeline Script:
 ```
-@Library('mpl@release') _
+@Library('mpl') _
 MPLPipeline {}
 ```
 
@@ -103,7 +102,7 @@ Use of the `CFG` object is quite simple. Imagine we have the next pipeline confi
   * `CFG.'val2.val_list' = null`; `CFG.val2` == `[val_nested:'value',val_list:null]`
   * `CFG.val2 = [new_key:[4,3,2,1]]`; `CFG.val2` == `[new_key:[4,3,2,1]]`
 
-So you got the point - hopefully this will be helpful and will allow you to create the great interfaces for your modules.
+The above can be used to create more interfaces and modules.
 
 ### Modules
 
@@ -111,74 +110,20 @@ MPL is mostly modules with logic. Basic features:
 
 * Simple groovy sandbox step files with all the pipeline features
 * Could be used in declarative & scripted pipelines
-* Override system with loop protection and simple nesting
+* Override system with execution protection
 
-In fact modules could be loaded from a number of places:
-* `{ProjectRepo}/.jenkins/modules/{Stage}/{Name}{Stage}.groovy` - custom modules for the project
-* `{Library}/{SpecifiedModulesLoadPath}/modules/{Stage}/{Name}{Stage}.groovy` - custom modules load path that added while init
+Modules are loaded from the MPL library:
 * `{Library}/resources/com/fhlmc/devops/mpl/modules/{Stage}/{Name}{Stage}.groovy` - library modules for everyone
 
-If you will override module Build in your project repo, it will be used first.
-If you will try to require Build module from this overridden Build module - original library module will be used.
-
-Check the usage examples & library modules to get some clue about the nesting system.
-
-### Creating / Overriding steps modules
-
-If your project is special - you can override or provide aditional modules just for the project.
-
-What do you need to do:
-1. Create a step file: `{ProjectRepo}/.jenkins/modules/{Stage}/{Name}{Stage}.groovy` (name could be empty)
-2. Fill the step with your required logic: you can use `CFG` config object & MPL functions inside the steps definition
-3. Use this step in your custom pipeline (or, if it's override, in standard pipeline) via MPLModule method.
-4. Provided custom modules will be available to use after the checkout of your project source only
-
-For example: "Maven Build" steps have path `modules/Build/MavenBuild.groovy` and placed in the library - feel free to check it out.
-
-### Post Steps
-
-MPL supports 2 useful poststep interfaces which allow you to store all the logic of module in the same file.
-
-All the poststeps will be executed in LIFO order and all the exceptions will be collected & displayed in the logs.
-
-#### MPLModulePostStep
-
-Allow to set some actions that need to be executed right after the current module (doesn't matter it fails or not).
-
-Could be useful when you need to collect reports or clean stage agent before it will be killed.
-
-If module post step fails - it's fatal for the module, so the pipeline will fail (unlike general poststeps). All the poststeps
-for the module will be executed and errors will be printed, but module will fail.
-
-`{NestedLibModules}/Build/MavenBuild.groovy`:
-```
-MPLModulePostStep {
-  junit 'target/junitReport/*.xml'
-}
-
-// Could fail but our poststep will be executed
-MPLModule('Maven Build', CFG)
-```
-
-#### MPLPostStep
-
-General poststep interface usually used in the pipelines. Requires 2 calls - first one to define poststep in a module and second one
-to execute it and usually placed in the pipeline post actions.
-
-When error occurs during poststeps execution - it will be printed in the log, but status of pipeline will not be affected.
-
-Notices:
-* The function `MPLEnforce` could be executed only once, after that it will ignore any further executions.
-* This trick is really working only if you controlling the job pipeline scripts, with Jenkinsfile it's not so secure.
-
+Check the usage example below
 
 ### Standard Pipeline usage
 
-If we fine with standard pipeline, but need to slightly modify options.
+Typical standard pipeline usage with application specific overrides.
 
 `{ProjectRepo}/Jenkinsfile`:
 ```
-@Library('mpl@release') _
+@Library('mpl') _
 
 // Use default master pipeline
 MPLPipeline {
@@ -186,19 +131,8 @@ MPLPipeline {
   // Example: (check available options in the pipeline definition)
   agent_label = 'LS'                     // Set agent label
   modules.Build.tool_version = 'Maven 2' // Change tool for build stage
-  modules.Test = null                    // Disable Test stage
-}
-```
-
-
-### Using nested library (based on MPL)
-
-`{ProjectRepo}/Jenkinsfile`:
-```
-@Library('mpl') _
-
-MPLPipeline {
- \
+  modules.CodeScan.profile = 'exempt'    // Uses the 'exempt' quality profile
+  modules.CodeScan.scan_type = 'java'   // specifies the type of applicaction that will be scanned
 }
 ```
 
