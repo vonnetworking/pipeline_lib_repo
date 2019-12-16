@@ -42,11 +42,9 @@ Go to: Manage Jenkins --> Configure System --> Global Pipeline Libraries:
 
 ## Usage
 
-You can use MPL in 3 different ways - it's 3 layers of the library:
+You will use MPL as a library reference in your Jenkinsfile:
 
-* **Pipeline** - Standard pipelines implemented for you. Just use them for your project or as example for your custom pipeline.
 * **Modules**  - Common steps you can find in each pipeline. Prepare your pipeline structure and just use the required modules.
-* **Features** - Some useful libraries that you can use. Prepare your own pipeline with custom modules and use just features from the library.
 
 ### Jenkinsfile / Pipeline script
 
@@ -55,16 +53,6 @@ Just two lines to use default Master pipeline in your project Jenkinsfile or in 
 @Library('mpl@release') _
 MPLPipeline {}
 ```
-
-### Pipelines
-
-You can find pipelines in the MPL library interfaces: `{MPL}/vars/MPL{Name}Pipeline.groovy` files.
-
-There is 2 ways to slightly reconfigure the provided standard pipeline:
-* Provide some configuration when you using pipeline in your jenkinsfile (see examples)
-* Override pipeline modules in the project (see `Creating / Overriding steps modules` section)
-
-If both ways are not helping - just create your own pipeline definition in the Jenkinsfile and use MPL modules or create your own nested library with your standard pipelines.
 
 ### Configuration
 
@@ -236,47 +224,6 @@ Notices:
 * The function `MPLEnforce` could be executed only once, after that it will ignore any further executions.
 * This trick is really working only if you controlling the job pipeline scripts, with Jenkinsfile it's not so secure.
 
-### Nested libraries
-
-MPL supporting the nested libraries to simplify work for a big teams which would like to use MPL but with some modifications.
-
-Basically you just need to provide your `vars` interfaces and specify the mpl library to use it:
-
-* `{NestedLib}/vars/MPLInit.groovy`:
-  ```
-  def call() {
-    // Using the latest release MPL and adding the custom path to find modules
-    library('mpl@release')
-    MPLModulesPath('com/yourcompany/mpl')
-  }
-  ```
-* `{NestedLib}/vars/NestedPipeline.groovy`:
-  ```
-  def call(body) {
-    MPLInit() // Init the MPL library
-    ...       // Specifying the configs / pipelines and using modules etc.
-  }
-  ```
-
-And after that and configuring the library for your jenkins (just put it after the `mpl` config) - you can use it in the project's Jenkinsfile (see examples).
-
-Also you can override resources of the MPL library - but it's forever. You can't use MPL resource anymore if you will override it in the nested library.
-
-You can cover the nested library with tests as well as MPL library - please check the nested library example on wiki page.
-
-## Release process
-
-Jenkins shared libraries is just a repositories connected to the Jenkins Master instance. So you can use any branch/tag from the MPL or nested lib repo.
-
-* branch:**18.04** - released version of the library. Can be used to pin the version.
-* branch:**master** - most fresh functions (and bugs) are here. You can use it for testing purposes.
-* branch:**TICKET-1234** - feature branch, could be used for testing purposes.
-
-## Examples
-
-### Wiki page examples
-
-Please check the wiki page to see some MPL examples: [MPL Wiki](https://github.com/griddynamics/mpl/wiki)
 
 ### Standard Pipeline usage
 

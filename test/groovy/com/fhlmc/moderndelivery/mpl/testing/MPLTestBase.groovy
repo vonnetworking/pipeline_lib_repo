@@ -1,6 +1,6 @@
 //
-// Copyright (c) 2018 Grid Dynamics International, Inc. All Rights Reserved
-// https://www.griddynamics.com
+// Copyright (c) 2019 Agile Trailblazers, Inc. All Rights Reserved
+// https://www.agiletrailblazers.com
 //
 // Classification level: Confidential
 //
@@ -9,7 +9,7 @@
 // @Description: Shared Jenkins Modular Pipeline Library
 //
 
-package com.griddynamics.devops.mpl.testing
+package com.fhlmc.moderndelivery.mpl.testing
 
 import com.lesfurets.jenkins.unit.BasePipelineTest
 
