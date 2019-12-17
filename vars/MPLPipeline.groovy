@@ -21,6 +21,7 @@ def call(body) {
       Checkout: [:],
       HealthCheck: [:],
       Build: [:],
+      CodeScan: [:],
       Deploy: [:],
       Test: [:]
     ]
@@ -47,6 +48,12 @@ def call(body) {
         }
       }
       stage( 'Build' ) {
+        when { expression { MPLModuleEnabled() } }
+        steps {
+          MPLModule()
+        }
+      }
+      stage( 'CodeScan' ) {
         when { expression { MPLModuleEnabled() } }
         steps {
           MPLModule()
