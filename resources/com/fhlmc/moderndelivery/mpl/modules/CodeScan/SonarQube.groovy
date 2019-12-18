@@ -2,7 +2,9 @@
  * Simple Sonar Scan
  */
 
-
- def scannerHome = tool 'SonarQubeScanner';
-     withSonarQubeEnv('SonarQubeScanner') { // If you have configured more than one global server connection, you can specify its name
-       sh "${scannerHome}/bin/sonar-scanner"
+script {
+     def sonarqubeScannerHome = tool name: 'SonarQubeScanner'
+     withSonarQubeEnv('SonarQubeScanner') {
+          sh "${sonarqubeScannerHome}/bin/sonar-scanner"
+        }
+  }
