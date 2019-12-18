@@ -2,7 +2,10 @@
  * Common build module
  */
 
-if(CFG.'build_tool_gradle') {
+
+def gradle = 'build'
+
+if(CFG.gradle) {
   MPLModule('Gradle Build', CFG)
 } 
 
