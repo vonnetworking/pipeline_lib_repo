@@ -2,12 +2,14 @@
  * Simple Sonar Scan
  */
 
-script {
+/*script {
      def sonarqubeScannerHome = tool name: 'SonarQubeScanner'
      withSonarQubeEnv('SonarQubeScanner') {
           sh "${sonarqubeScannerHome}/bin/sonar-scanner --version"
         }
 }
+*/
 
+sh "mvn -v"
 
 
