@@ -6,9 +6,9 @@
 def gradle = 'build'
 
 if(CFG.build_tool_gradle) {
-  MPLModule('Maven Build', CFG)
+  MPLModule('Gradle Build', CFG)
 } 
 
-/*else {
+else {
   MPLModule('Maven Build', CFG)
-}*/
+}
