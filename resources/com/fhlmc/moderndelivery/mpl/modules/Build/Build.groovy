@@ -5,7 +5,7 @@
 
 def gradle = 'build'
 
-if(CFG.gradle) {
+if(CFG.build_tool_gradle) {
   MPLModule('Gradle Build', CFG)
 } 
 
