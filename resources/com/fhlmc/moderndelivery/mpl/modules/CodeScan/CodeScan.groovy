@@ -1,0 +1,2 @@
+
+MPLModule('Sonar Qube', CFG)
