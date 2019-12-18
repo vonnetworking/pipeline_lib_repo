@@ -6,6 +6,6 @@ script {
           
           scannerHome = tool 'SonarQubeScanner'
         }
-        withSonarQubeEnv('SonarQube Scanner') {
+        withSonarQubeEnv('SonarQubeScanner') {
           sh "${scannerHome}/bin/sonar-scanner"
         }
