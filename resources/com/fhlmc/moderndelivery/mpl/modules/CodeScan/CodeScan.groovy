@@ -3,12 +3,8 @@
 
 
 script {
-          
-          def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-
-        
-        withSonarQubeEnv('SonarQubeScanner') {
+     def sonarqubeScannerHome = tool name: 'SonarQubeScanner'
+     withSonarQubeEnv('SonarQubeScanner') {
           sh "${sonarqubeScannerHome}/bin/sonar-scanner"
         }
-  
   }
