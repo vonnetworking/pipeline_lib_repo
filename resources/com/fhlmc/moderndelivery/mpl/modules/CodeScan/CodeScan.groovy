@@ -1,5 +1,11 @@
 
 //MPLModule('Sonar Qube', CFG)
-def scannerHome = tool 'SonarQubeScanner';
-   sh "${scannerHome}/bin/sonar-scanner"
-  
+
+
+script {
+          
+          scannerHome = tool 'SonarQubeScanner'
+        }
+        withSonarQubeEnv('SonarQube Scanner') {
+          sh "${scannerHome}/bin/sonar-scanner"
+        }
