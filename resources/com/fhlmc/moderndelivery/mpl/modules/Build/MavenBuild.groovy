@@ -7,10 +7,16 @@ if (CFG.'maven_goals'){
 }
 /* Default build on Maven 3 */
 
-withEnv(["PATH+MAVEN=${tool(CFG.'maven.tool_version' ?: CFG.'maven_tool_version')}/bin"]) {
-  def settings = CFG.'maven.settings_path' ? "-s '${CFG.'maven.settings_path'}'" : ''
-  sh """mvn -B ${settings} -DargLine='-Xmx1024m -XX:MaxPermSize=1024m' ${mavenGoals}"""
-  sh "mvn -v"
+def mavenVersion = 'Maven 3'
+if (CFG.'maven_tool_version'){
+  mavenVersion =CFG.'maven_tool_version'
 }
+
+withEnv(["PATH+MAVEN=${tool(CFG.'maven.tool_version' ?: ${mavenVersion})}/bin"]) {
+  def settings = CFG.'maven.settings_path' ? "-s '${CFG.'maven.settings_path'}'" : ''
+  sh "mvn -v"
+  sh """mvn -B ${settings} -DargLine='-Xmx1024m -XX:MaxPermSize=1024m' ${mavenGoals}"""  
+}
+
 
 
