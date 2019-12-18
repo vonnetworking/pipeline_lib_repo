@@ -2,8 +2,8 @@
  * Simple Maven Build
  */
 def mavenGoals = 'clean install'
-if (CFG.'maven.goals'){
-  mavenGoals = CFG.'maven.goals'
+if (CFG.'maven_goals'){
+  mavenGoals = CFG.'maven_goals'
 }
 /* Default build on Maven 3 */
 
@@ -14,4 +14,3 @@ withEnv(["PATH+MAVEN=${tool(CFG.'maven.tool_version' ?: CFG.'maven_tool_version'
 }
 
 
-/*'${CFG.'maven.Build.tool_version'}' */
