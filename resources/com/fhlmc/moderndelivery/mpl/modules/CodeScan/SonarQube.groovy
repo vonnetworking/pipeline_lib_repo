@@ -5,6 +5,6 @@
 script {
      def sonarqubeScannerHome = tool name: 'SonarQubeScanner'
      withSonarQubeEnv('SonarQubeScanner') {
-          sh "${sonarqubeScannerHome}/bin/sonar-scanner"
+          sh "${sonarqubeScannerHome}/bin/sonar-scanner --version"
         }
   }
