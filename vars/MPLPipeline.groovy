@@ -15,8 +15,9 @@
  * @author Agile Trailblazers
  */
 def call(body) {
+  def worker = 'modp_jenkins_worker_1'
   def MPL = MPLPipelineConfig(body, [
-    agent_label: 'modp_jenkins_worker_1',
+    agent_label: ${worker},
     maven_tool_version: '',
     modules: [
       Checkout: [:],
