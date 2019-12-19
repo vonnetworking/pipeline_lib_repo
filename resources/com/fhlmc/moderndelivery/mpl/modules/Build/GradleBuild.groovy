@@ -28,7 +28,7 @@ withEnv(["PATH+GRADLE=${tool(CFG.'gradle.tool_version' ?: """${gradleVersion}"""
      // junit 'target/*/*.xml'
     } else {
         echo 'No build.gradle exists'
-       def newex = new MPLModuleException("Found error during execution. No build.gradle exists")
+       def newex = new MPLModuleException("Found error during execution. No build.gradle exists in the project workspace")
       newex.setStackTrace(Helper.getModuleStack(newex))
       throw newex
     }
