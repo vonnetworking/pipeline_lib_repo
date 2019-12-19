@@ -15,7 +15,8 @@ if (CFG.'maven_tool_version'){
 withEnv(["PATH+MAVEN=${tool(CFG.'maven.tool_version' ?: """${mavenVersion}""")}/bin"]) {
   def settings = CFG.'maven.settings_path' ? "-s '${CFG.'maven.settings_path'}'" : ''
   sh "mvn -v"
-  sh """mvn -B ${settings} -DargLine='-Xmx1024m -XX:MaxPermSize=1024m' ${mavenGoals}"""  
+  sh """mvn -B ${settings} -DargLine='-Xmx1024m -XX:MaxPermSize=1024m' ${mavenGoals}""" 
+  junit 'target/*/*.xml'
 }
 
 
