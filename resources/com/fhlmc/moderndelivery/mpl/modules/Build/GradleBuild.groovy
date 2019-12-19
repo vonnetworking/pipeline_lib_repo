@@ -1,6 +1,11 @@
 /**
  * Gradle Build
  */
+
+import com.fhlmc.moderndelivery.mpl.Helper
+//import com.fhlmc.moderndelivery.mpl.MPLManager
+import com.fhlmc.moderndelivery.mpl.MPLModuleException
+
 def gradleTasks = 'build'
 if (CFG.gradle_tasks){
   gradleTasks = CFG.gradle_tasks
@@ -23,6 +28,9 @@ withEnv(["PATH+GRADLE=${tool(CFG.'gradle.tool_version' ?: """${gradleVersion}"""
      // junit 'target/*/*.xml'
     } else {
         echo 'No build.gradle exists'
+       def newex = new MPLModuleException("Found error during execution. No build.gradle exists")
+      newex.setStackTrace(Helper.getModuleStack(newex))
+      throw newex
     }
   
 }
