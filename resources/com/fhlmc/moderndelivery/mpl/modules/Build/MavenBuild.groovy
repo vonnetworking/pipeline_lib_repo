@@ -1,6 +1,10 @@
 /**
  * Simple Maven Build
  */
+
+import com.fhlmc.moderndelivery.mpl.Helper
+import com.fhlmc.moderndelivery.mpl.MPLModuleException
+
 def mavenGoals = 'clean install'
 if (CFG.'maven_goals'){
   mavenGoals = CFG.'maven_goals'
@@ -22,7 +26,9 @@ withEnv(["PATH+MAVEN=${tool(CFG.'maven.tool_version' ?: """${mavenVersion}""")}/
       /* Publish Junit Test Results */
       junit 'target/*/*.xml'
     } else {
-        echo 'No pom.xml exists'
+        def newex = new MPLModuleException("Found error during execution. No pom.xml file exists in the project workspace")
+      newex.setStackTrace(Helper.getModuleStack(newex))
+      throw newex
     }
   
 }
