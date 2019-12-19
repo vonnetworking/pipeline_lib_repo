@@ -36,6 +36,9 @@ def call(body) {
   pipeline {
     agent {
       label MPL.agentLabel
+      if (CFG.'jdk_version_11'){
+     worker = 'modp_jenkins_worker_jdk11'
+}
     }
     options {
       skipDefaultCheckout(true)
