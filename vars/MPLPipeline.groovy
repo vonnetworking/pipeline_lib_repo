@@ -16,6 +16,10 @@
  */
 def call(body) {
   def worker = 'modp_jenkins_worker_1'
+  
+  if (CFG.'jdk_version_11'){
+     worker = 'modp_jenkins_worker_jdk11'
+}
   def MPL = MPLPipelineConfig(body, [
     agent_label: "${worker}",
     maven_tool_version: '',
