@@ -60,7 +60,7 @@ def call(body) {
           MPLModule()
         }
       }
-      stage( 'Deploy' ) {
+    /*  stage( 'Deploy' ) {
         when { expression { MPLModuleEnabled() } }
         steps {
           MPLModule()
@@ -72,7 +72,7 @@ def call(body) {
           MPLModule()
         }
       }
-    }
+    } */
     post {
       always {
         MPLPostStepsRun('always')
