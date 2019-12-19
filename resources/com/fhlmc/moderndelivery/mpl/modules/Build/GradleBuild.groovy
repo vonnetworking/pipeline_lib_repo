@@ -3,7 +3,6 @@
  */
 
 import com.fhlmc.moderndelivery.mpl.Helper
-//import com.fhlmc.moderndelivery.mpl.MPLManager
 import com.fhlmc.moderndelivery.mpl.MPLModuleException
 
 def gradleTasks = 'build'
