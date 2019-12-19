@@ -17,10 +17,12 @@
 def call(body) {
   def MPL = MPLPipelineConfig(body, [
     agent_label: '',
+    maven_tool_version: '',
     modules: [
       Checkout: [:],
       HealthCheck: [:],
       Build: [:],
+      CodeScan: [:],
       Deploy: [:],
       Test: [:]
     ]
@@ -52,7 +54,13 @@ def call(body) {
           MPLModule()
         }
       }
-      stage( 'Deploy' ) {
+      stage( 'CodeScan' ) {
+        when { expression { MPLModuleEnabled() } }
+        steps {
+          MPLModule()
+        }
+      }
+    /*  stage( 'Deploy' ) {
         when { expression { MPLModuleEnabled() } }
         steps {
           MPLModule()
@@ -63,8 +71,8 @@ def call(body) {
         steps {
           MPLModule()
         }
-      }
-    }
+      }*/
+    } 
     post {
       always {
         MPLPostStepsRun('always')
