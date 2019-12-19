@@ -17,6 +17,7 @@ withEnv(["PATH+MAVEN=${tool(CFG.'maven.tool_version' ?: """${mavenVersion}""")}/
   sh "mvn -v"
   sh """mvn -B ${settings} -DargLine='-Xmx1024m -XX:MaxPermSize=1024m' ${mavenGoals}""" 
   junit 'target/*/*.xml'
+  sh "cat target/*/*.xml"
 }
 
 
