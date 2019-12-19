@@ -16,7 +16,7 @@
  */
 def call(body) {
   def MPL = MPLPipelineConfig(body, [
-    agent_label: '',
+    agent_label: 'modp_jenkins_worker_1',
     maven_tool_version: '',
     modules: [
       Checkout: [:],
