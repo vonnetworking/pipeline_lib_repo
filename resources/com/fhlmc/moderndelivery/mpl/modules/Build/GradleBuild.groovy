@@ -15,7 +15,7 @@ if (CFG.gradle_version){
 withEnv(["PATH+GRADLE=${tool(CFG.'gradle.tool_version' ?: """${gradleVersion}""")}/bin"]) {
   def settings = CFG.'gradle.settings_path' ? "-s '${CFG.'gradle.settings_path'}'" : ''
   
-  def exists = fileExists 'pom.xml'
+  def exists = fileExists 'build.gradle'
     if (exists) {
         echo 'Yes build.gradle file exists at root'
         sh """gradle ${gradleTasks}""" 
