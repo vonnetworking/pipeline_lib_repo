@@ -1,8 +1,6 @@
 if( CFG.'scan_type' ){
-  MPLModule('Fortify Scan', CFG)
+  MPLModule('Fortify CodeScan', CFG)
 }
 else{
-  MPLModule('SonarQube', CFG)
+  MPLModule('SonarQube CodeScan', CFG)
 }
-
-
