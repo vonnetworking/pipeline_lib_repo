@@ -19,7 +19,7 @@ import com.fhlmc.moderndelivery.mpl.MPLConfig
 
 def call(body) {
  
-  def CFG = MPLConfig.create(CFG)
+  def CFG = MPLConfig.clone()
   
   def worker = 'modp_jenkins_worker_1'
    
