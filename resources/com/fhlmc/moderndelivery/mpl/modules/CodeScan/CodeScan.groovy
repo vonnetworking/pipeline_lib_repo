@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Common code scan module
  */
