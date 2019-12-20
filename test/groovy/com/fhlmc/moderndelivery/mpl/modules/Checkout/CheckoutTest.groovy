@@ -52,4 +52,14 @@ class CheckoutTest extends MPLTestBase {
         printCallStack()
 
     }
+
+    @Test
+    void change_branch() throws Exception {
+
+    }
+
+    @Test
+    void change_creds() throws Exception {
+
+    }
 }

@@ -81,6 +81,34 @@ class BuildTest extends MPLTestBase {
   }
 
   @Test
+  void gradle_run() throws Exception {
+    script.call('Gradle Build')
+
+    printCallStack()
+
+    assertThat(helper.callStack)
+            .filteredOn { c -> c.methodName == 'tool' }
+            .filteredOn { c -> c.argsToString().contains('Gradle 6') }
+            .isNotEmpty()
+
+    assertThat(helper.callStack)
+            .as('Shell execution should contain gradle command and default build')
+            .filteredOn { c -> c.methodName == 'sh' }
+            .filteredOn { c -> c.argsToString().startsWith('gradle') }
+            .filteredOn { c -> c.argsToString().contains('build') }
+            .isNotEmpty()
+
+    assertThat(helper.callStack)
+            .as('Default mvn run without settings provided')
+            .filteredOn { c -> c.methodName == 'sh' }
+            .filteredOn { c -> c.argsToString().startsWith('gradle') }
+            .filteredOn { c -> ! c.argsToString().contains('-s ') }
+            .isNotEmpty()
+
+    assertJobStatusSuccess()
+  }
+
+  @Test
   void change_tool() throws Exception {
     script.call('Build', [
       maven: [
