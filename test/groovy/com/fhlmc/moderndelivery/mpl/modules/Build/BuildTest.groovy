@@ -54,7 +54,7 @@ class BuildTest extends MPLTestBase {
 
   @Test
   void default_run() throws Exception {
-    script.call('Build')
+    script.call('Maven Build')
 
     printCallStack()
 
