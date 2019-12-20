@@ -14,9 +14,15 @@
  *
  * @author Agile Trailblazers
  */
+
+import com.fhlmc.moderndelivery.mpl.MPLConfig
+
 def call(body) {
-  def worker = 'modp_jenkins_worker_1'
+ 
+  def CFG = MPLConfig.create(CFG)
   
+  def worker = 'modp_jenkins_worker_1'
+   
   if(CFG.'jdk_version_11') {
   worker = "modp_jenkins_worker_jdk_11"
 } 
