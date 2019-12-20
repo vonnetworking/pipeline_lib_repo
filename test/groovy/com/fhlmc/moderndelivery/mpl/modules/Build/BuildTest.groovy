@@ -87,6 +87,11 @@ class BuildTest extends MPLTestBase {
     printCallStack()
 
     assertThat(helper.callStack)
+            .filteredOn { c -> c.methodName == 'build_tool_gradle' }
+            .filteredOn { c -> c.argsToString().contains('y') }
+            .isNotEmpty()
+
+    assertThat(helper.callStack)
             .filteredOn { c -> c.methodName == 'tool' }
             .filteredOn { c -> c.argsToString().contains('Gradle 6') }
             .isNotEmpty()
@@ -99,7 +104,7 @@ class BuildTest extends MPLTestBase {
             .isNotEmpty()
 
     assertThat(helper.callStack)
-            .as('Default mvn run without settings provided')
+            .as('Default gradle run without settings provided')
             .filteredOn { c -> c.methodName == 'sh' }
             .filteredOn { c -> c.argsToString().startsWith('gradle') }
             .filteredOn { c -> ! c.argsToString().contains('-s ') }
@@ -138,7 +143,7 @@ class BuildTest extends MPLTestBase {
     printCallStack()
 
     assertThat(helper.callStack)
-      .as('Providing setings file should set the maven opetion')
+      .as('Providing setings file should set the maven option')
       .filteredOn { c -> c.methodName == 'sh' }
       .filteredOn { c -> c.argsToString().contains("-s '/test-settings.xml'") }
       .isNotEmpty()
