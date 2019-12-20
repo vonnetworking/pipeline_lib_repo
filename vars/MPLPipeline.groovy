@@ -15,20 +15,12 @@
  * @author Agile Trailblazers
  */
 
-import com.fhlmc.moderndelivery.mpl.MPLConfig
-
 def call(body) {
  
-  def CFG = MPLConfig.clone()
-  
-  def worker = 'modp_jenkins_worker_1'
-   
-  if(CFG.'jdk_version_11') {
-  worker = "modp_jenkins_worker_jdk_11"
-} 
+
   
   def MPL = MPLPipelineConfig(body, [
-    agent_label: "${worker}",
+    agent_label: '',
     maven_tool_version: '',
     modules: [
       Checkout: [:],
@@ -40,6 +32,9 @@ def call(body) {
     ]
   ])
 
+  if (MPL.agentLabel ==''){
+  MPL.agentLabel= 'modp_jenkins_worker_1'
+  }
   pipeline {
     agent {
       label MPL.agentLabel
