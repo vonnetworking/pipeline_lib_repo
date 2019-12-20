@@ -16,11 +16,16 @@
  */
 
 def call(body) {
- 
 
-  
+  def worker;
+if (MPL.agentLabel ==''){
+ worker = 'modp_jenkins_worker_1'
+  } 
+  else{
+  worker = MPL.agentLabel
+  }
   def MPL = MPLPipelineConfig(body, [
-    agent_label: '',
+    agent_label: "${worker}",
     maven_tool_version: '',
     modules: [
       Checkout: [:],
@@ -32,9 +37,7 @@ def call(body) {
     ]
   ])
 
-  if (MPL.agentLabel ==''){
-  MPL.agentLabel= 'modp_jenkins_worker_1'
-  }
+
   pipeline {
     agent {
       label MPL.agentLabel
