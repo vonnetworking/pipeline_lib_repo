@@ -37,5 +37,19 @@ class CheckoutTest extends MPLTestBase {
                 .implicit(true)
                 .checkout()
         )
+
+        super.setUp()
+
+        // url, branch, credentials
+
+        script = loadScript('MPLModule.groovy')
+    }
+
+    @Test
+    void git_checkout() throws Exception {
+        script.call('Git Checkout')
+
+        printCallStack()
+
     }
 }
