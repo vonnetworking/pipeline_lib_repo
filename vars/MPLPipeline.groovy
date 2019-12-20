@@ -14,10 +14,12 @@
  *
  * @author Agile Trailblazers
  */
+
 def call(body) {
-  def worker = 'modp_jenkins_worker_1'
+
+
   def MPL = MPLPipelineConfig(body, [
-    agent_label: "${worker}",
+    agent_label: '',
     maven_tool_version: '',
     modules: [
       Checkout: [:],
@@ -28,6 +30,11 @@ def call(body) {
       Test: [:]
     ]
   ])
+
+  if(MPL.getAgentLabel() == '')
+  {
+    MPL.setAgentLabel('modp_jenkins_worker_1')
+  }
 
   pipeline {
     agent {

@@ -62,6 +62,11 @@ class MPLManager implements Serializable {
     config.agent_label
   }
 
+  public void setAgentLabel(String agentLabel)
+  {
+    config.agent_label = agentLabel
+  }
+
   /**
    * Get a module configuration
    * Module config is a pipeline config without modules section and with overrided values from the module itself.
