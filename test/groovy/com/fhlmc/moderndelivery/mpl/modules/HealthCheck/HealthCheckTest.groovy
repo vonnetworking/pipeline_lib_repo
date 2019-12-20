@@ -21,21 +21,5 @@ import com.fhlmc.moderndelivery.mpl.Helper
 import com.fhlmc.moderndelivery.mpl.testing.MPLTestBase
 
 class HealthCheckTest extends MPLTestBase {
-    def script = null
 
-    @Override
-    @Before
-    void setUp() throws Exception {
-        String sharedLibs = this.class.getResource('.').getFile()
-
-        helper.registerSharedLibrary(library()
-                .name('mpl')
-                .allowOverride(false)
-                .retriever(localSource(sharedLibs))
-                .targetPath(sharedLibs)
-                .defaultVersion('snapshot')
-                .implicit(true)
-                .healthcheck()
-        )
-    }
 }

@@ -21,45 +21,5 @@ import com.fhlmc.moderndelivery.mpl.Helper
 import com.fhlmc.moderndelivery.mpl.testing.MPLTestBase
 
 class CheckoutTest extends MPLTestBase {
-    def script = null
 
-    @Override
-    @Before
-    void setUp() throws Exception {
-        String sharedLibs = this.class.getResource('.').getFile()
-
-        helper.registerSharedLibrary(library()
-                .name('mpl')
-                .allowOverride(false)
-                .retriever(localSource(sharedLibs))
-                .targetPath(sharedLibs)
-                .defaultVersion('snapshot')
-                .implicit(true)
-                .checkout()
-        )
-
-        super.setUp()
-
-        // url, branch, credentials
-
-        script = loadScript('MPLModule.groovy')
-    }
-
-    @Test
-    void git_checkout() throws Exception {
-        script.call('Git Checkout')
-
-        printCallStack()
-
-    }
-
-    @Test
-    void change_branch() throws Exception {
-        printCallStack()
-    }
-
-    @Test
-    void change_creds() throws Exception {
-        printCallStack()
-    }
 }

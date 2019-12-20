@@ -37,5 +37,28 @@ class CodeScanTest extends MPLTestBase {
                 .implicit(true)
                 .codescan()
         )
+
+        setScriptRoots([ 'vars' ] as String[])
+        setScriptExtension('groovy')
+
+        super.setUp()
+
+        binding.setVariable('env', [:])
+
+        helper.registerAllowedMethod('fileExists', [String.class], { true })
+        helper.registerAllowedMethod('tool', [String.class], { name -> "${name}_HOME" })
+        helper.registerAllowedMethod('withEnv', [List.class, Closure.class], null)
+
+        script = loadScript('MPLModule.groovy')
     }
+
+    @Test
+    void run_scan() throws Exception {
+        script.call('SonarQube CodeScan')
+
+        printCallStack()
+
+        assertJobStatusSuccess()
+    }
+
 }
