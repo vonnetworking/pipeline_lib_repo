@@ -14,7 +14,10 @@
  *
  * @author Agile Trailblazers
  */
+
 def call(body) {
+
+
   def MPL = MPLPipelineConfig(body, [
     agent_label: '',
     maven_tool_version: '',
@@ -27,6 +30,11 @@ def call(body) {
       Test: [:]
     ]
   ])
+
+  if(MPL.getAgentLabel() == '')
+  {
+    MPL.setAgentLabel('modp_jenkins_worker_1')
+  }
 
   pipeline {
     agent {
@@ -69,7 +77,7 @@ def call(body) {
           MPLModule()
         }
       }
-    /*  stage( 'Deploy' ) {
+     /* stage( 'Deploy' ) {
         when { expression { MPLModuleEnabled() } }
         steps {
           MPLModule()
