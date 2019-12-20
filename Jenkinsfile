@@ -1,4 +1,4 @@
-@Library('mpl') _
+@Library('sasi') _
 
 MPLPipeline {
    /*
@@ -17,6 +17,6 @@ MPLPipeline {
    // gradle.tasks = 'build'
    // Maven (default: Maven 3)
    // maven.goals = 'clean install'
-   // maven.tool_version = 'Maven 2'
+   maven_goals = 'clean install test'
 
 }
