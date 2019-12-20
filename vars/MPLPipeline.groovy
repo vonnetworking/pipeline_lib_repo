@@ -63,15 +63,6 @@ def call(body) {
         }
       }
       stage( 'CodeScan' ) {
-<<<<<<< HEAD
-        when { expression { MPLModuleEnabled() } }
-        steps {
-          MPLModule()
-        }
-      }
-      stage( 'Deploy' ) {
-=======
->>>>>>> f427710f63f0c3d4f914200ecbbc6c5e41aa0191
         when { expression { MPLModuleEnabled() } }
         steps {
           MPLModule()
