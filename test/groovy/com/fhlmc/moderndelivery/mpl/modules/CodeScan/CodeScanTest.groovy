@@ -58,6 +58,13 @@ class CodeScanTest extends MPLTestBase {
 
         printCallStack()
 
+        assertThat(helper.callStack)
+          .as('Sonar scanner execution should contain sonar-scanner command and sonar-project.properties file')
+          .filteredOn { c -> c.methodName == 'sh' }
+          .filteredOn { c -> c.argsToString().startsWith('SonarQubeScanner/bin/sonar-scanner') }
+          .filteredOn { c -> c.argsToString().contains('-Dproject.settings=sonar-project.properties') }
+          .isNotEmpty()
+
         assertJobStatusSuccess()
     }
 
