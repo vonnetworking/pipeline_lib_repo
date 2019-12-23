@@ -44,7 +44,7 @@ class HealthCheckTest extends MPLTestBase {
         super.setUp()
 
         binding.setVariable('env', [:])
-        
+
         script = loadScript('MPLModule.groovy')
     }
     @Test
