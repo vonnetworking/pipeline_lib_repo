@@ -45,20 +45,19 @@ class HealthCheckTest extends MPLTestBase {
 
         binding.setVariable('env', [:])
 
-        helper.registerAllowedMethod('fileExists', [String.class], { true })
+
 
         script = loadScript('MPLModule.groovy')
     }
     @Test
-    void check_alive_status() throws Exception {
+    void checkThatHealthCheckSucceedsWithOkCode() throws Exception {
+
+        helper.registerAllowedMethod('getResponseCode', [String.class], { "200" })
         script.call('HealthCheck')
 
         printCallStack()
-
-        assertThat(helper.callStack)
-                .as('Health check execution should contain a curl command and tool instance target URL')
-                .isNotEmpty()
-
         assertJobStatusSuccess()
     }
+
+
 }
