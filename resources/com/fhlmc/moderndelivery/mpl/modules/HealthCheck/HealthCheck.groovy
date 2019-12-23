@@ -4,7 +4,7 @@
 
 echo 'Toolchain Healthcheck ...'
 
-MPLModule('Jira HealthCheck', CFG)
+//MPLModule('Jira HealthCheck', CFG)
 //MPLModule('Sonar HealthCheck', CFG)
 //MPLModule('Artifactory HealthCheck', CFG)
 //MPLModule('Elasticache HealthCheck', CFG)
