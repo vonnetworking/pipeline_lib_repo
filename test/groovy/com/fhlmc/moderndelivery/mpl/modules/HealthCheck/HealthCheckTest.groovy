@@ -21,5 +21,44 @@ import com.fhlmc.moderndelivery.mpl.Helper
 import com.fhlmc.moderndelivery.mpl.testing.MPLTestBase
 
 class HealthCheckTest extends MPLTestBase {
+    def script = null
 
+    @Override
+    @Before
+    void setUp() throws Exception {
+        String sharedLibs = this.class.getResource('.').getFile()
+
+        helper.registerSharedLibrary(library()
+                .name('mpl')
+                .allowOverride(false)
+                .retriever(localSource(sharedLibs))
+                .targetPath(sharedLibs)
+                .defaultVersion('snapshot')
+                .implicit(true)
+                .build()
+        )
+
+        setScriptRoots([ 'vars' ] as String[])
+        setScriptExtension('groovy')
+
+        super.setUp()
+
+        binding.setVariable('env', [:])
+
+        helper.registerAllowedMethod('fileExists', [String.class], { true })
+
+        script = loadScript('MPLModule.groovy')
+    }
+    @Test
+    void check_alive_status() throws Exception {
+        script.call('HealthCheck')
+
+        printCallStack()
+
+        assertThat(helper.callStack)
+                .as('Health check execution should contain a curl command and tool instance target URL')
+                .isNotEmpty()
+
+        assertJobStatusSuccess()
+    }
 }
