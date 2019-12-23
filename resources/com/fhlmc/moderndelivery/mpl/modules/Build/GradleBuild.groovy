@@ -22,6 +22,7 @@ withEnv(["PATH+GRADLE=${tool(CFG.'gradle.tool_version' ?: """${gradleVersion}"""
   def exists = fileExists 'build.gradle'
     if (exists) {
         echo 'Yes build.gradle file exists at root'
+        sh "cat build.gradle"
         sh """gradle ${gradleTasks}""" 
       /* Publish Junit Test Results */
      // junit 'target/*/*.xml'
