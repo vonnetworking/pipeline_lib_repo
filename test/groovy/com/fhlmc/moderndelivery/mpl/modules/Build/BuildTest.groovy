@@ -87,11 +87,6 @@ class BuildTest extends MPLTestBase {
     printCallStack()
 
     assertThat(helper.callStack)
-            .filteredOn { c -> c.methodName == 'build_tool_gradle' }
-            .filteredOn { c -> c.argsToString().contains('y') }
-            .isNotEmpty()
-
-    assertThat(helper.callStack)
             .filteredOn { c -> c.methodName == 'tool' }
             .filteredOn { c -> c.argsToString().contains('Gradle 5') }
             .isNotEmpty()
