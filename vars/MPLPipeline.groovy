@@ -63,7 +63,6 @@ def call(body) {
         }
       }
       stage( 'Configure' ) {
-        when { expression { MPLModuleEnabled() } }
         steps {
           script {
             def env = System.getenv()
