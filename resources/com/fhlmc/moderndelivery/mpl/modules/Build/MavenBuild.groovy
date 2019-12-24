@@ -24,6 +24,7 @@ withEnv(["PATH+MAVEN=${tool(CFG.'maven.tool_version' ?: """${mavenVersion}""")}/
         echo 'Yes pom.xml exists at root'
       sh """mvn -B ${settings} -DargLine='-Xmx1024m -XX:MaxPermSize=1024m' ${mavenGoals}"""  
       /* Publish Junit Test Results if the tests ran*/
+      junit 'target/surefire-reports/*.xml'
       def test_results_exist = fileExists 'target/*/*.xml'
       	if (test_results_exist){
       		junit 'target/*/*.xml'
