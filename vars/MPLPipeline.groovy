@@ -14,12 +14,11 @@
  *
  * @author Agile Trailblazers
  */
+import jenkins.model.Jenkins
 
 def call(body) {
 
-  def env = System.getenv()
-//Print all the environment variables.
-
+  def env = Jenkins.instance.getGlobalNodeProperties()[0].getEnvVars()
   env.each{
     println it
   }
