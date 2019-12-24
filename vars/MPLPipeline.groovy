@@ -17,8 +17,9 @@
 
 def call(body) {
 
+  def config = new File('mdbuild.config').text
 
-  def MPL = MPLPipelineConfig(body, [
+  def MPL = MPLPipelineConfig(config, [
     agent_label: '',
     maven_tool_version: '',
     modules: [
