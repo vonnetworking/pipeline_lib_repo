@@ -59,7 +59,9 @@ def call(body) {
       stage( 'Configure' ) {
         steps {
           script {
+            
             println "current workspace is ${workspace}"
+            sh "ls -al"
             def workspace = pwd()
             def config = new File(workspace + "/mdbuild.config").text
             MPL = MPLPipelineConfig(config, [
