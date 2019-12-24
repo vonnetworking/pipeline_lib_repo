@@ -18,16 +18,13 @@ import jenkins.model.Jenkins
 
 def call(body) {
 
-  def env = System.getenv()
-  env.each{
-    println it
-  }
+
 
   def workingDirectory = new File(".").getCanonicalPath()
   println workingDirectory
-  def config = new File('./mdbuild.config').text
+  //def config = new File('./mdbuild.config').text
 
-  def MPL = MPLPipelineConfig(config, [
+  def MPL = MPLPipelineConfig(body, [
     agent_label: '',
     maven_tool_version: '',
     modules: [
@@ -65,6 +62,16 @@ def call(body) {
           MPLModule()
         }
       }
+      stage( 'Configure' ) {
+        when { expression { MPLModuleEnabled() } }
+        steps {
+          def env = System.getenv()
+          env.each{
+            println it
+          }
+        }
+      }
+
       stage( 'Build' ) {
         when { expression { MPLModuleEnabled() } }
         steps {
