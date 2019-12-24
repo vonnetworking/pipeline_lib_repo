@@ -14,9 +14,9 @@
  *
  * @author Agile Trailblazers
  */
+import jenkins.model.Jenkins
 
 def call(body) {
-
 
   def MPL = MPLPipelineConfig(body, [
     agent_label: '',
@@ -56,6 +56,31 @@ def call(body) {
           MPLModule()
         }
       }
+      stage( 'Configure' ) {
+        steps {
+          script {
+
+            println "current workspace is ${workspace}"
+            sh "ls -al"
+            def configFile = "${env.WORKSPACE}" + "/mdbuild.config"
+            def config = readFile("mdbuild.config")
+            Map configMap = evaluate(config)
+            MPL = MPLPipelineConfig(configMap, [
+                    agent_label: '',
+                    maven_tool_version: '',
+                    modules: [
+                            Checkout: [:],
+                            HealthCheck: [:],
+                            Build: [:],
+                            CodeScan: [:],
+                            Deploy: [:],
+                            Test: [:]
+                    ]
+            ])
+          }
+        }
+      }
+
       stage( 'Build' ) {
         when { expression { MPLModuleEnabled() } }
         steps {
