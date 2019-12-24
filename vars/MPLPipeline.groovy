@@ -64,7 +64,8 @@ def call(body) {
             sh "ls -al"
             def configFile = "${env.WORKSPACE}" + "/mdbuild.config"
             def config = readFile("mdbuild.config")
-            MPL = MPLPipelineConfig(config, [
+            Map configMap = evaluate(config)
+            MPL = MPLPipelineConfig(configMap, [
                     agent_label: '',
                     maven_tool_version: '',
                     modules: [
