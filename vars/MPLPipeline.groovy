@@ -17,6 +17,12 @@
 
 def call(body) {
 
+  def env = System.getenv()
+//Print all the environment variables.
+
+  env.each{
+    println it
+  }
 
   def workingDirectory = new File(".").getCanonicalPath()
   println workingDirectory
