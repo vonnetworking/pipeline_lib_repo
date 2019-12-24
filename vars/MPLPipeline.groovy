@@ -17,9 +17,10 @@
 
 def call(body) {
 
-  def config = new File('./mdbuild.config').text
+
   def workingDirectory = new File(".").getCanonicalPath()
   println workingDirectory
+  def config = new File('./mdbuild.config').text
 
   def MPL = MPLPipelineConfig(config, [
     agent_label: '',
