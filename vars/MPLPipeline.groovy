@@ -65,10 +65,7 @@ def call(body) {
       stage( 'Configure' ) {
         steps {
           script {
-            def env = System.getenv()
-            env.each {
-              println it
-            }
+            println "current workspace is ${workspace}"
           }
         }
       }
