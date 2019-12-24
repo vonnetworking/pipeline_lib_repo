@@ -63,7 +63,7 @@ def call(body) {
             println "current workspace is ${workspace}"
             sh "ls -al"
             def configFile = "${env.WORKSPACE}" + "/mdbuild.config"
-            def config = new File(configFile).text
+            def config = readFile("mdbuild.config")
             MPL = MPLPipelineConfig(config, [
                     agent_label: '',
                     maven_tool_version: '',
