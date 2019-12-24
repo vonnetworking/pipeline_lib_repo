@@ -59,11 +59,11 @@ def call(body) {
       stage( 'Configure' ) {
         steps {
           script {
-            
+
             println "current workspace is ${workspace}"
             sh "ls -al"
-            def workspace = pwd()
-            def config = new File(workspace + "/mdbuild.config").text
+            def configFile = "${env.WORKSPACE}" + "/mdbuild.config"
+            def config = new File(configFile).text
             MPL = MPLPipelineConfig(config, [
                     agent_label: '',
                     maven_tool_version: '',
