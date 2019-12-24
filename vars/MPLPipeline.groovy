@@ -17,7 +17,7 @@
 
 def call(body) {
 
-  def config = new File('mdbuild.config').text
+  def config = new File('./mdbuild.config').text
 
   def MPL = MPLPipelineConfig(config, [
     agent_label: '',
