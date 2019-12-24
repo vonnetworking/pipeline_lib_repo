@@ -60,7 +60,7 @@ def call(body) {
         steps {
           script {
             println "current workspace is ${workspace}"
-            def workspace = $workspace
+            def workspace = pwd()
             def config = new File(workspace + "/mdbuild.config").text
             MPL = MPLPipelineConfig(config, [
                     agent_label: '',
