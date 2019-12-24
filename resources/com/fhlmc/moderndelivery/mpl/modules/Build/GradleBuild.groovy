@@ -24,8 +24,11 @@ withEnv(["PATH+GRADLE=${tool(CFG.'gradle.tool_version' ?: """${gradleVersion}"""
         echo 'Yes build.gradle file exists at root'
         sh "cat build.gradle"
         sh """gradle ${gradleTasks}""" 
-      /* Publish Junit Test Results */
-     // junit 'target/*/*.xml'
+      /* Publish Coverage Results */
+   def coverageExists = fileExists 'coverage/cobertura-coverage.xml'
+      if (coverageExists){
+      step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage/cobertura-coverage.xml'])
+      }
     } else {
         echo 'No build.gradle exists'
        def newex = new MPLModuleException("Found error during execution. No build.gradle exists in the project workspace")
