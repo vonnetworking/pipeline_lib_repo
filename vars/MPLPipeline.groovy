@@ -18,7 +18,7 @@ import jenkins.model.Jenkins
 
 def call(body) {
 
-  def env = Jenkins.instance.getGlobalNodeProperties()[0].getEnvVars()
+  def env = System.getenv()
   env.each{
     println it
   }
