@@ -18,12 +18,6 @@ import jenkins.model.Jenkins
 
 def call(body) {
 
-
-
-  def workingDirectory = new File(".").getCanonicalPath()
-  println workingDirectory
-  //def config = new File('./mdbuild.config').text
-
   def MPL = MPLPipelineConfig(body, [
     agent_label: '',
     maven_tool_version: '',
@@ -66,6 +60,20 @@ def call(body) {
         steps {
           script {
             println "current workspace is ${workspace}"
+            def workspace = $workspace
+            def config = new File(workspace + "/mdbuild.config").text
+            MPL = MPLPipelineConfig(config, [
+                    agent_label: '',
+                    maven_tool_version: '',
+                    modules: [
+                            Checkout: [:],
+                            HealthCheck: [:],
+                            Build: [:],
+                            CodeScan: [:],
+                            Deploy: [:],
+                            Test: [:]
+                    ]
+            ])
           }
         }
       }
