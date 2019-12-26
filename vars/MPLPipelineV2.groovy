@@ -58,11 +58,11 @@ def call(body) {
             sh "ls -al"
             /* def configFile = "${env.WORKSPACE}" + "/mdbuild.config"
             def config = readFile("mdbuild.config")
-            Map configMap = evaluate(config)*/
+            Map configMap = evaluate(config) */
             def config = readYaml file:"manifest.yaml"
-            echo $config
+            echo config
             Map configMap = evaluate(config)
-            echo $configMap
+            echo configMap
             MPL = MPLPipelineConfig(configMap, [
                     agent_label: '',
                     maven_tool_version: '',
