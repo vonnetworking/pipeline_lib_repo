@@ -36,15 +36,9 @@ def call(body) {
     MPL.setAgentLabel('modp_jenkins_worker_1')
   }
 
-  /*pipeline {
-    agent {
-      label MPL.agentLabel
-    }
     options {
       skipDefaultCheckout(true)
     }
-    stages {*/
-
       stage( 'HealthCheck' ) {
         if ( expression { MPLModuleEnabled() } ){
           MPLModule()
@@ -64,7 +58,9 @@ def call(body) {
             def config = readFile("mdbuild.config")
             Map configMap = evaluate(config)*/
             def config = readYAML file:"manifest.yaml"
+            echo $config
             Map configMap = evaluate(config)
+            echo $configMap
             MPL = MPLPipelineConfig(configMap, [
                     agent_label: '',
                     maven_tool_version: '',
