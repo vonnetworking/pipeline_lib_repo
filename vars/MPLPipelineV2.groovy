@@ -39,17 +39,18 @@ def call(body) {
     /* options {
       skipDefaultCheckout(true)
     } */
-    
+
       stage( 'HealthCheck' ) {
         if ( expression { MPLModuleEnabled() } ){
           MPLModule()
         }
       }
-      stage( 'Checkout' ) {
+      /* stage( 'Checkout' ) {
         if ( expression { MPLModuleEnabled() } ){
           MPLModule()
         }
-      }
+      } */
+      
       stage( 'Configure' ) {
           script {
 
