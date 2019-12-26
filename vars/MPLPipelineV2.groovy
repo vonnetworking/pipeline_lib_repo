@@ -50,7 +50,7 @@ def call(body) {
           MPLModule()
         }
       } */
-      
+
       stage( 'Configure' ) {
           script {
 
@@ -59,7 +59,7 @@ def call(body) {
             /* def configFile = "${env.WORKSPACE}" + "/mdbuild.config"
             def config = readFile("mdbuild.config")
             Map configMap = evaluate(config)*/
-            def config = readYAML file:"manifest.yaml"
+            def config = readYaml file:"manifest.yaml"
             echo $config
             Map configMap = evaluate(config)
             echo $configMap
