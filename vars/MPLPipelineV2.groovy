@@ -120,5 +120,3 @@ def call(body) {
         MPLPostStepsRun('failure')
       }
     }
-  }
-}
