@@ -60,9 +60,9 @@ def call(body) {
             def config = readFile("mdbuild.config")
             Map configMap = evaluate(config) */
             def config = readYaml file:"manifest.yaml"
-            echo config
+            println config.getClass()
             Map configMap = evaluate(config)
-            echo configMap
+            println configMap.getClass()
             MPL = MPLPipelineConfig(configMap, [
                     agent_label: '',
                     maven_tool_version: '',
