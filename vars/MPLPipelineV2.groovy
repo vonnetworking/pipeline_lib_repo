@@ -46,18 +46,16 @@ def call(body) {
     stages {*/
 
       stage( 'HealthCheck' ) {
-        if ( expression { MPLModuleEnabled() } ) {
+        if ( expression { MPLModuleEnabled() } ){
           MPLModule()
         }
       }
       stage( 'Checkout' ) {
-        when { expression { MPLModuleEnabled() } }
-        steps {
+        if ( expression { MPLModuleEnabled() } ){
           MPLModule()
         }
       }
       stage( 'Configure' ) {
-        steps {
           script {
 
             println "current workspace is ${workspace}"
@@ -81,17 +79,14 @@ def call(body) {
             ])
           }
         }
-      }
 
       stage( 'Build' ) {
-        when { expression { MPLModuleEnabled() } }
-        steps {
+        if ( { expression { MPLModuleEnabled() } ){
           MPLModule()
         }
       }
       stage( 'CodeScan' ) {
-        when { expression { MPLModuleEnabled() } }
-        steps {
+        if ( expression { MPLModuleEnabled() } ){
           MPLModule()
         }
       }
