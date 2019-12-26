@@ -46,8 +46,7 @@ def call(body) {
     stages {*/
 
       stage( 'HealthCheck' ) {
-        if ( expression { MPLModuleEnabled() } )
-        steps {
+        if ( expression { MPLModuleEnabled() } ) {
           MPLModule()
         }
       }
