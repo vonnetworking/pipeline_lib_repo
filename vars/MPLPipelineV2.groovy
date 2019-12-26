@@ -46,11 +46,11 @@ def call(body) {
     stages {*/
 
       stage( 'HealthCheck' ) {
-        when { expression { MPLModuleEnabled() } }
+        if ( expression { MPLModuleEnabled() } )
         steps {
           MPLModule()
+        }
       }
-    }
       stage( 'Checkout' ) {
         when { expression { MPLModuleEnabled() } }
         steps {
