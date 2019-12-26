@@ -81,7 +81,7 @@ def call(body) {
         }
 
       stage( 'Build' ) {
-        if ( { expression { MPLModuleEnabled() } ){
+        if ( expression { MPLModuleEnabled() } ){
           MPLModule()
         }
       }
