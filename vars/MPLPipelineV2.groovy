@@ -36,9 +36,10 @@ def call(body) {
     MPL.setAgentLabel('modp_jenkins_worker_1')
   }
 
-    options {
+    /* options {
       skipDefaultCheckout(true)
-    }
+    } */
+    
       stage( 'HealthCheck' ) {
         if ( expression { MPLModuleEnabled() } ){
           MPLModule()
