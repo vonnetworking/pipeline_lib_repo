@@ -59,7 +59,7 @@ def call(body) {
             /* def configFile = "${env.WORKSPACE}" + "/mdbuild.config"
             def config = readFile("mdbuild.config")
             Map configMap = evaluate(config) */
-            def configMap = readYaml file:"manifest.yaml"
+            def configMap = readYaml file:"pipeline_config.yaml"
             MPL = MPLPipelineConfig(configMap, [
                     agent_label: '',
                     maven_tool_version: '',
