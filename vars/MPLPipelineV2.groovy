@@ -41,8 +41,10 @@ def call(body) {
     } */
 
       stage( 'HealthCheck' ) {
-        if ( expression { MPLModuleEnabled() } ){
-          MPLModule()
+        node('node1') {
+          if ( expression { MPLModuleEnabled() } ){
+            MPLModule()
+          }
         }
       }
       /* stage( 'Checkout' ) {
