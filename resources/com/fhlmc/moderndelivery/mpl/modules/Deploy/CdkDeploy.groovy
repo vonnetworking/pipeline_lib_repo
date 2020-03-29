@@ -4,5 +4,5 @@ withCredentials([usernamePassword(credentialsId: 'av_dockerhub_id', usernameVari
   sh "export PATH=$PATH:/usr/local/bin && /usr/local/bin/docker login -u \$HUB_USER -p \$HUB_PASS && /usr/local/bin/docker push vonnetworking/springboot-test"
 sh "/usr/local/bin/docker rmi --force `/usr/local/bin/docker images | grep springboot-test | head -1 | awk '{ print \$3 }'`"
 }
-
+def app_version = readFile("VERSION").trim()
 sh "cd cdk_ecs && cdk deploy"
