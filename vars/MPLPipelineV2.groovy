@@ -67,14 +67,12 @@ def call(body) {
         }
       }
      stage( 'Deploy' ) {
-        when { expression { MPLModuleEnabled() } }
-        steps {
+        if ( expression { MPLModuleEnabled() } ){
           MPLModule()
         }
       }
       stage( 'Test' ) {
-        when { expression { MPLModuleEnabled() } }
-        steps {
+        if ( expression { MPLModuleEnabled() } ){
           MPLModule()
         }
       }
