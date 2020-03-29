@@ -1,8 +1,8 @@
 // defines steps to deploy using cdk def; usually defining an ecs delpoyment
 
 if(CFG.'deploy_type' == 'cdk') {
-  MPLModule('CDK Deploy', CFG)
+  MPLModule('Cdk Deploy', CFG)
 }
 else {
-  MPLModule('EKS Deploy', CFG)
+  MPLModule('Eks Deploy', CFG)
 }
