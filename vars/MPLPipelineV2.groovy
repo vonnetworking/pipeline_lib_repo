@@ -25,7 +25,7 @@ def call(body) {
       Checkout: [:],
       Build: [:],
       Deploy: [:],
-      Test [:]
+      Test: [:]
     ]
   ])
 
