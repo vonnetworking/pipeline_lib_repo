@@ -1,5 +1,8 @@
-/**
- * Common deploy module
- */
+// defines steps to deploy using cdk def; usually defining an ecs delpoyment
 
-MPLModule('Deploy', CFG)
+if(CFG.'deploy_type' == 'cdk') {
+  MPLModule('CDK Deploy', CFG)
+}
+else {
+  MPLModule('EKS Deploy', CFG)
+}

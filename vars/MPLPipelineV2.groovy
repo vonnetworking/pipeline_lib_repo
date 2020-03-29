@@ -23,11 +23,9 @@ def call(body) {
     maven_tool_version: '',
     modules: [
       Checkout: [:],
-      HealthCheck: [:],
       Build: [:],
-      CodeScan: [:],
       Deploy: [:],
-      Test: [:]
+      Test [:]
     ]
   ])
 
@@ -39,19 +37,6 @@ def call(body) {
     /* options {
       skipDefaultCheckout(true)
     } */
-
-      stage( 'HealthCheck' ) {
-        node('node1') {
-          if ( expression { MPLModuleEnabled() } ){
-            MPLModule()
-          }
-        }
-      }
-      /* stage( 'Checkout' ) {
-        if ( expression { MPLModuleEnabled() } ){
-          MPLModule()
-        }
-      } */
 
       stage( 'Configure' ) {
           script {
@@ -69,7 +54,6 @@ def call(body) {
                             Checkout: [:],
                             HealthCheck: [:],
                             Build: [:],
-                            CodeScan: [:],
                             Deploy: [:],
                             Test: [:]
                     ]
